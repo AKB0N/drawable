@@ -1,11 +1,7 @@
-
-
-
 import 'package:drawable/src/drawable_type.dart';
 import 'package:drawable/src/drawables/adaptive_icon_drawable.dart';
 import 'package:drawable/src/drawables/bitmap_drawable.dart';
 import 'package:drawable/src/drawables/color_drawable.dart';
-import 'package:drawable/src/drawable_type.dart';
 import 'package:drawable/src/drawables/vector_drawable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';

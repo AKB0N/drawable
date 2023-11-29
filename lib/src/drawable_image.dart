@@ -1,7 +1,6 @@
 
-
-
 import 'dart:ui' as ui;
+
 import 'package:drawable/drawable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
@@ -53,6 +52,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
     final bytes = drawable.content;
 
     final buffer = await ui.ImmutableBuffer.fromUint8List(bytes);
+
     return decode(buffer);
   }
 
