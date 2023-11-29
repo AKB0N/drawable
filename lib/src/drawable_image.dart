@@ -1,5 +1,4 @@
-
-import 'dart:ui' as ui;
+import 'dart:ui' as ui show Codec;
 
 import 'package:drawable/drawable.dart';
 import 'package:flutter/foundation.dart';
@@ -29,7 +28,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
   }
 
   @override
-  ImageStreamCompleter load(DrawableImage key, ImageDecoderCallback decode) {
+  ImageStreamCompleter load(DrawableImage key, DecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key, decode),
       scale: key.scale,
@@ -40,7 +39,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
     );
   }
 
-  Future<ui.Codec> _loadAsync(DrawableImage key, ImageDecoderCallback decode) async {
+  Future<ui.Codec> _loadAsync(DrawableImage key, DecoderCallback decode) async {
     assert(key == this);
 
     final drawable = await androidDrawable.loadBitmap(name: name);
@@ -51,9 +50,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
     }
     final bytes = drawable.content;
 
-    final buffer = await ui.ImmutableBuffer.fromUint8List(bytes);
-
-    return decode(buffer);
+    return decode(bytes);
   }
 
   @override
