@@ -51,7 +51,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
       );
     }
     final bytes = drawable.content;
-    final buffer = ImmutableBuffer.fromUint8List(bytes);
+    final buffer = await ImmutableBuffer.fromUint8List(bytes);
     return decode(buffer);
   }
 
