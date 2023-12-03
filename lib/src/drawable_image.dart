@@ -1,8 +1,9 @@
-import 'dart:ui' as ui;
+import 'dart:ui' as ui show Codec;
 
 import 'package:drawable/drawable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
 /// Loads the given Android Drawable identified by [name] as an image,
 /// associating it with the given scale.
@@ -49,11 +50,8 @@ class DrawableImage extends ImageProvider<DrawableImage> {
         '$name does not exist and cannot be loaded as an image.',
       );
     }
-
     final bytes = drawable.content;
-
-    final buffer = await ui.ImmutableBuffer.fromUint8List(bytes);
-
+    final buffer = ImmutableBuffer.fromUint8List(bytes);
     return decode(buffer);
   }
 

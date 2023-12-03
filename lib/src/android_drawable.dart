@@ -39,7 +39,7 @@ class AndroidDrawable {
   }) async {
     final data = await _channel.invokeMethod<Uint8List>('vector', {
       _id: name,
-      _type: type,
+      _type: describeEnum(type),
       _scale: scale,
     });
     if (data == null) {

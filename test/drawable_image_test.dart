@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:drawable/drawable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,8 +11,11 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return Uint8List.fromList(kBlueRectPng);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+      return Uint8List.fromList(
+        kBlueRectPng,
+      );
     });
   });
 
