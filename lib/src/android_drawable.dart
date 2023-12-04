@@ -68,7 +68,7 @@ class AndroidDrawable {
     final data =
         await _channel.invokeMethod<Map<dynamic, dynamic>>('adaptiveIcon', {
       _id: name,
-      _type: describeEnum(type),
+      _type: type,
       _scale: scale,
     });
     if (data == null) {

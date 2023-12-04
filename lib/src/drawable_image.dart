@@ -29,7 +29,8 @@ class DrawableImage extends ImageProvider<DrawableImage> {
   }
 
   @override
-  ImageStreamCompleter load(DrawableImage key, ImageDecoderCallback decode) {
+  ImageStreamCompleter loadImage(
+      DrawableImage key, ImageDecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key, decode),
       scale: key.scale,
@@ -51,6 +52,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
       );
     }
     final bytes = drawable.content;
+
     final buffer = await ImmutableBuffer.fromUint8List(bytes);
     return decode(buffer);
   }
