@@ -66,7 +66,7 @@ class DrawableImage extends ImageProvider<DrawableImage> {
   }
 
   @override
-  int get hashCode => hashValues(name, scale);
+  int get hashCode => Object.hash(name, scale);
 
   @override
   String toString() =>
